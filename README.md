@@ -80,6 +80,8 @@ GNU的make很强大，它可以自动推导文件以及文件依赖关系后面�
 	.PHONY : clean  
 	clean:  
 		del test.exe $(objects)  
+需要了解的是，其中g++ -o test &(objects)可写成g++ $(objects) -o test。  
+
 <h4>3.5.清空目标文件规则</h4>
 
 每个Makefile中都应该写一个清空目标文件（.o和执行文件）的规则，这不仅便于重编译，也很利于保持文件的清洁。一般写为：  
