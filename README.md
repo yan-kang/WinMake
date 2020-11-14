@@ -67,6 +67,7 @@ z在上面的例子中我们可以看到.o文件的字符串被重复了两次�
 GNU的make很强大，它可以自动推导文件以及文件依赖关系后面的命令，于是我们就没必要去在每一个 .o 文件后都写上类似的命令，因为，我们的make会自动识别，并自己推导命令。  
 只要make看到一个.o文件，它就会自动的把.cpp文件加在依赖关系中，如果make找到一个 whatever.o ，那么 whatever.cpp 就会是 whatever.o 的依赖文件。并且 g++ -c whatever.cpp也会被推导出来，于是，我们的makefile再也不用写得这么复杂。  
 改写上述例子：  
+
 	objects=main.o test.o  
 	edit:$(objects)  
 		g++ -o test $(objects)  
@@ -77,9 +78,11 @@ GNU的make很强大，它可以自动推导文件以及文件依赖关系后面�
 <h4>清空目标文件规则</h4>
 
 每个Makefile中都应该写一个清空目标文件（.o和执行文件）的规则，这不仅便于重编译，也很利于保持文件的清洁。一般写为：  
+
 	clean:  
 		del test.exe $(objects)  
 稳健的写法：  
+
 	.PHONY : clean  
 	clean :  
 		del test.exe $(objects)  
